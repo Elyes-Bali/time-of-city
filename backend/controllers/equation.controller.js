@@ -322,11 +322,7 @@ export const answerEquation = async (req, res) => {
     //   });
     // }
 // Skip lock check for clock mode
-if (equation.mode !== "clock" && !progress.unlockedTypes.includes(equation.type)) {
-  return res.status(403).json({
-    message: `${equation.type} level is locked`
-  });
-}
+
     const isCorrect = Number(answer) === Number(equation.correctAnswer);
 
     const existingCorrect = await UserAnswer.findOne({
